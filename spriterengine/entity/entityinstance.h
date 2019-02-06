@@ -1,6 +1,7 @@
 #ifndef ENTITYINSTANCE_H
 #define ENTITYINSTANCE_H
 
+#include <functional>
 #include <map>
 #include <vector>
 #include <list>
@@ -112,6 +113,10 @@ namespace SpriterEngine
 		void setCurrentTime(real newCurrentTime);
 		void setTimeRatio(real newCurrentTimeRatio) override;
 
+		bool hasAnimation(const std::string &animationName);
+
+		void setAnimationCompleteCallback(std::function<void()> onAnimationCompleteCallback);
+
 		void setPlaybackSpeedRatio(real newPlaybackSpeedRatio);
 
 		void setCurrentTimeToPreviousKeyFrame();
@@ -168,6 +173,8 @@ namespace SpriterEngine
 		StringList appliedCharacterMaps;
 
 		real playbackSpeedRatio;
+
+		std::function<void()> onAnimationCompleteCallback;
 	};
 
 }

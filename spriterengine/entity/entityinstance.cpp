@@ -29,7 +29,8 @@ namespace SpriterEngine
 		blendTotalTime(0),
 		blendedAnimation(0),
 		isPlaying(true),
-		justFinished(false)
+		justFinished(false),
+		onAnimationCompleteCallback(nullptr)
 	{
 	}
 	EntityInstance::EntityInstance(SpriterModel *model, Entity *entity, CharacterMapInterface *initialCharacterMapInterface, ObjectFactory *objectFactory) :
@@ -45,7 +46,8 @@ namespace SpriterEngine
 		blendTotalTime(0),
 		blendedAnimation(0),
 		isPlaying(true),
-		justFinished(false)
+		justFinished(false),
+		onAnimationCompleteCallback(nullptr)
 	{
 		model->setupFileReferences(&files);
 		currentEntity = (*entities.insert(std::make_pair(entity->getId(), new EntityInstanceData(model, this, entity, objectFactory))).first).second;
@@ -82,6 +84,11 @@ namespace SpriterEngine
 					{
 						isPlaying = false;
 						newTime = currentAnimation->length();
+					}
+
+					if (this->onAnimationCompleteCallback != nullptr)
+					{
+						this->onAnimationCompleteCallback();
 					}
 				}
 
@@ -535,6 +542,17 @@ namespace SpriterEngine
 	{
 		currentAnimation = newCurrentAnimation;
 		isPlaying = true;
+	}
+
+	bool EntityInstance::hasAnimation(const std::string &animationName)
+	{
+		return currentEntity->hasAnimation(animationName);
+	}
+
+
+	void EntityInstance::setAnimationCompleteCallback(std::function<void()> onAnimationCompleteCallback)
+	{
+		this->onAnimationCompleteCallback = onAnimationCompleteCallback;
 	}
 
 	void EntityInstance::setCurrentTime(real newCurrentTime)

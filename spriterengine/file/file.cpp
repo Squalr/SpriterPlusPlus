@@ -24,6 +24,11 @@ namespace SpriterEngine
 		return 0;
 	}
 
+	void File::setPath(std::string newPath)
+	{
+		this->filePath = newPath;
+	}
+
 	std::string File::path()
 	{
 		return filePath;

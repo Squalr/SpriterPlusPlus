@@ -78,6 +78,7 @@ namespace SpriterEngine
 
 		void setCurrentAnimation(int newAnimationIndex, AnimationInstance **currentAnimation);
 		void setCurrentAnimation(const std::string &animationName, AnimationInstance **currentAnimation);
+		bool hasAnimation(const std::string &animationName);
 
 		void pushBackAnimationInstance(const std::string &name, AnimationInstance *newAnimationInstance);
 		void setObjectInstance(int id, const  std::string &name, UniversalObjectInterface *newObjectInstance);

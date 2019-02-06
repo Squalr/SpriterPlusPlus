@@ -27,6 +27,9 @@ namespace SpriterEngine
 		UniversalObjectInterface();
 		virtual ~UniversalObjectInterface() = 0;
 
+		void toggleTimelineCanUpdate(bool timelineCanUpdate) { _timelineCanUpdate = timelineCanUpdate; }
+		bool canTimelineUpdate() { return _timelineCanUpdate; }
+
 		virtual point getPosition();
 		virtual real getAngle();
 		virtual point getScale();
@@ -95,6 +98,9 @@ namespace SpriterEngine
 		virtual void render();
 
 		virtual void playTrigger();
+
+	private:
+		bool _timelineCanUpdate = true;
 	};
 
 }

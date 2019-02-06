@@ -409,6 +409,17 @@ namespace SpriterEngine
 		}
 	}
 
+	bool EntityInstanceData::hasAnimation(const std::string &animationName)
+	{
+		auto it = animationNameMap.find(animationName);
+		if (it != animationNameMap.end())
+		{
+			return true;
+		}
+
+		return false;
+	}
+
 	void EntityInstanceData::playSoundTriggers()
 	{
 		for (auto& it : sounds)

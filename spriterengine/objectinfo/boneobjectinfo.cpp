@@ -57,10 +57,13 @@ namespace SpriterEngine
 
 	void BoneObjectInfo::setObjectToLinear(UniversalObjectInterface *bObject, real t, UniversalObjectInterface *resultObject)
 	{
-		resultObject->setAngle(angle.angleLinear(bObject->getAngle(), t));
-		resultObject->setPosition(linear(position, bObject->getPosition(), t));
-		resultObject->setScale(linear(scale, bObject->getScale(), t));
-		resultObject->setAlpha(linear(alpha, bObject->getAlpha(), t));
+		if (this->canTimelineUpdate())
+		{
+			resultObject->setAngle(angle.angleLinear(bObject->getAngle(), t));
+			resultObject->setPosition(linear(position, bObject->getPosition(), t));
+			resultObject->setScale(linear(scale, bObject->getScale(), t));
+			resultObject->setAlpha(linear(alpha, bObject->getAlpha(), t));
+		}
 	}
 
 }

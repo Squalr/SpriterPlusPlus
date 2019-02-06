@@ -20,6 +20,7 @@ namespace SpriterEngine
 		virtual SoundFile *soundFile();
 		virtual AtlasFile *atlasFile();
 
+		void setPath(std::string newPath);
 		std::string path();
 
 	private:

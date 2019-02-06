@@ -33,23 +33,32 @@ namespace SpriterEngine
 
 	void ObjectRefInstance::processKey(real currentTime)
 	{
-		key->process(currentTime, resultObjectInterface);
+		if (resultObjectInterface->canTimelineUpdate())
+		{
+			key->process(currentTime, resultObjectInterface);
+		}
 	}
 
 	void ObjectRefInstance::blendKey(real currentTime, real blendRatio)
 	{
-		key->blend(currentTime, blendRatio, resultObjectInterface, this);
+		if (resultObjectInterface->canTimelineUpdate())
+		{
+			key->blend(currentTime, blendRatio, resultObjectInterface, this);
+		}
 	}
 
 	void ObjectRefInstance::processTransform()
 	{
-		if (parentTransformer)
+		if (resultObjectInterface->canTimelineUpdate())
 		{
-			parentTransformer->transformChildObject(resultObjectInterface);
-		}
-		else
-		{
-			Settings::error("ObjectRefInstance::processTransform - parent transform processor missing");
+			if (parentTransformer)
+			{
+				parentTransformer->transformChildObject(resultObjectInterface);
+			}
+			else
+			{
+				Settings::error("ObjectRefInstance::processTransform - parent transform processor missing");
+			}
 		}
 	}
 

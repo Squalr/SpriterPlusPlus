@@ -79,26 +79,29 @@ namespace SpriterEngine
 
 	void SpriteObjectInfo::setToBlendedLinear(UniversalObjectInterface *aObject, UniversalObjectInterface *bObject, real t, real blendRatio, ObjectRefInstance *blendedRefInstance)
 	{
-		real tempAngle = angle.angle;
-		point tempPosition = position;
-		point tempScale = scale;
-		real tempAlpha = alpha;
-		point tempPivot = pivot;
-		ImageFile *tempImageFile = imageFile;
-
-		blendedRefInstance->preProcess();
-
-		aObject->setObjectToLinear(bObject, t, this);
-
-		setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
-		setPosition(linear(tempPosition, position, blendRatio));
-		setScale(linear(tempScale, scale, blendRatio));
-		setAlpha(linear(tempAlpha, alpha, blendRatio));
-
-		if (blendRatio < 0.5)
+		if (this->canTimelineUpdate())
 		{
-			setPivot(tempPivot);
-			setImage(tempImageFile);
+			real tempAngle = angle.angle;
+			point tempPosition = position;
+			point tempScale = scale;
+			real tempAlpha = alpha;
+			point tempPivot = pivot;
+			ImageFile *tempImageFile = imageFile;
+
+			blendedRefInstance->preProcess();
+
+			aObject->setObjectToLinear(bObject, t, this);
+
+			setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
+			setPosition(linear(tempPosition, position, blendRatio));
+			setScale(linear(tempScale, scale, blendRatio));
+			setAlpha(linear(tempAlpha, alpha, blendRatio));
+
+			if (blendRatio < 0.5)
+			{
+				setPivot(tempPivot);
+				setImage(tempImageFile);
+			}
 		}
 	}
 

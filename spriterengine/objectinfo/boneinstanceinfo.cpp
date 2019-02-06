@@ -60,17 +60,20 @@ namespace SpriterEngine
 
 	void BoneInstanceInfo::setToBlendedLinear(UniversalObjectInterface *aObject, UniversalObjectInterface *bObject, real t, real blendRatio, ObjectRefInstance *blendedRefInstance)
 	{
-		real tempAngle = angle.angle;
-		point tempPosition = position;
-		point tempScale = scale;
-		real tempAlpha = alpha;
+		if (this->canTimelineUpdate())
+		{
+			real tempAngle = angle.angle;
+			point tempPosition = position;
+			point tempScale = scale;
+			real tempAlpha = alpha;
 
-		aObject->setObjectToLinear(bObject, t, this);
+			aObject->setObjectToLinear(bObject, t, this);
 
-		setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
-		setPosition(linear(tempPosition, position, blendRatio));
-		setScale(linear(tempScale, scale, blendRatio));
-		setAlpha(linear(tempAlpha, alpha, blendRatio));
+			setAngle(shortestAngleLinear(tempAngle, angle.angle, blendRatio));
+			setPosition(linear(tempPosition, position, blendRatio));
+			setScale(linear(tempScale, scale, blendRatio));
+			setAlpha(linear(tempAlpha, alpha, blendRatio));
+		}
 	}
 
 	void BoneInstanceInfo::render()
