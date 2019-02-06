@@ -1,7 +1,0 @@
-project(SPRITER_ENGINE CXX)
-
-file(GLOB_RECURSE SPRITER_ENGINE_SRCS *.cpp)
-file(GLOB_RECURSE SPRITER_ENGINE_HDRS *.h)
-
-add_library(spriterengine STATIC
-    ${SPRITER_ENGINE_SRCS})
