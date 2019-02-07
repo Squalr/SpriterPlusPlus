@@ -1,6 +1,7 @@
 #ifndef ANIMATIONINSTANCE_H
 #define ANIMATIONINSTANCE_H
 
+#include <string>
 #include <vector>
 
 #include "mainlinekeyinstance.h"
