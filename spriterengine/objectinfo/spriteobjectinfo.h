@@ -20,6 +20,7 @@ namespace SpriterEngine
 		point getPosition() override;
 		real getAngle() override;
 		point getScale() override;
+		real getAlphaOverride() override;
 		real getAlpha() override;
 		point getPivot() override;
 		ImageFile *getImage() override;
@@ -28,6 +29,7 @@ namespace SpriterEngine
 		void setPosition(const point &newPosition) override;
 		void setAngle(real newAngle) override;
 		void setScale(const point &newScale) override;
+		void setAlphaOverride(real newAlpha) override;
 		void setAlpha(real newAlpha) override;
 		void setPivot(const point &newPivot) override;
 		void setImage(ImageFile *newImageFile) override;
@@ -42,6 +44,7 @@ namespace SpriterEngine
 		point position;
 		AngleInfo angle;
 		point scale;
+		real alphaOverride;
 		real alpha;
 		point pivot;
 		ImageFile *imageFile;

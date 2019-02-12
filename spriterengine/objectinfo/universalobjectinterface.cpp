@@ -43,6 +43,12 @@ namespace SpriterEngine
 		return point();
 	}
 
+	real UniversalObjectInterface::getAlphaOverride()
+	{
+		Settings::error("UniversalObjectInterface::getAlphaOverride - object does not contain this component - falling back on default value");
+		return -1;
+	}
+
 	real UniversalObjectInterface::getAlpha()
 	{
 		Settings::error("UniversalObjectInterface::getAlpha - object does not contain this component - falling back on default value");
@@ -168,6 +174,11 @@ namespace SpriterEngine
 	void UniversalObjectInterface::setPivot(const point &newPivot)
 	{
 		Settings::error("UniversalObjectInterface::setPivot - object does not contain this component - no action taken");
+	}
+
+	void UniversalObjectInterface::setAlphaOverride(real newAlpha)
+	{
+		Settings::error("UniversalObjectInterface::setAlphaOverride - object does not contain this component - no action taken");
 	}
 
 	void UniversalObjectInterface::setAlpha(real newAlpha)

@@ -7,7 +7,8 @@ namespace SpriterEngine
 
 	SpriteObjectInfo::SpriteObjectInfo() :
 		scale(1, 1),
-		alpha(1)
+		alpha(1),
+		alphaOverride(-1)
 	{
 	}
 
@@ -31,8 +32,18 @@ namespace SpriterEngine
 		return scale;
 	}
 
+	real SpriteObjectInfo::getAlphaOverride()
+	{
+		return alphaOverride;
+	}
+
 	real SpriteObjectInfo::getAlpha()
 	{
+		if (this->alphaOverride != -1)
+		{
+			return this->alphaOverride;
+		}
+
 		return alpha;
 	}
 
@@ -65,6 +76,11 @@ namespace SpriterEngine
 	void SpriteObjectInfo::setScale(const point &newScale)
 	{
 		scale = newScale;
+	}
+
+	void SpriteObjectInfo::setAlphaOverride(real newAlpha)
+	{
+		alphaOverride = newAlpha;
 	}
 
 	void SpriteObjectInfo::setAlpha(real newAlpha)

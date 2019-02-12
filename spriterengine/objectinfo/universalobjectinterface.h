@@ -36,6 +36,7 @@ namespace SpriterEngine
 		virtual point getScale();
 		virtual point getPivot();
 		virtual real getAlpha();
+		virtual real getAlphaOverride();
 
 		virtual point getSize();
 
@@ -68,6 +69,7 @@ namespace SpriterEngine
 		virtual void setAngle(real newAngle);
 		virtual void setScale(const point &newScale);
 		virtual void setPivot(const point &newPivot);
+		virtual void setAlphaOverride(real newAlpha);
 		virtual void setAlpha(real newAlpha);
 		virtual void setSpin(int newSpin);
 
