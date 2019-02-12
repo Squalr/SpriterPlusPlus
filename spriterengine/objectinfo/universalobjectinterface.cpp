@@ -13,6 +13,12 @@ namespace SpriterEngine
 	{
 	}
 
+	point UniversalObjectInterface::getOffset()
+	{
+		Settings::error("UniversalObjectInterface::getOffset - object does not contain this component - falling back on default value");
+		return point();
+	}
+
 	point UniversalObjectInterface::getPosition()
 	{
 		Settings::error("UniversalObjectInterface::getPosition - object does not contain this component - falling back on default value");
@@ -139,6 +145,10 @@ namespace SpriterEngine
 		return false;
 	}
 
+	void UniversalObjectInterface::setOffset(const point &newOffset)
+	{
+		Settings::error("UniversalObjectInterface::setOffset - object does not contain this component - no action taken");
+	}
 
 	void UniversalObjectInterface::setPosition(const point &newPosition)
 	{

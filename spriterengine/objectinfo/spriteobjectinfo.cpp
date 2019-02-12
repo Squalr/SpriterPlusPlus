@@ -11,6 +11,11 @@ namespace SpriterEngine
 	{
 	}
 
+	point SpriteObjectInfo::getOffset()
+	{
+		return offset;
+	}
+
 	point SpriteObjectInfo::getPosition()
 	{
 		return position;
@@ -41,6 +46,11 @@ namespace SpriterEngine
 		return imageFile;
 	}
 
+
+	void SpriteObjectInfo::setOffset(const point &newOffset)
+	{
+		offset = newOffset;
+	}
 
 	void SpriteObjectInfo::setPosition(const point &newPosition)
 	{

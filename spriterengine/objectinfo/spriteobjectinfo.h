@@ -16,6 +16,7 @@ namespace SpriterEngine
 	public:
 		SpriteObjectInfo();
 
+		point getOffset() override;
 		point getPosition() override;
 		real getAngle() override;
 		point getScale() override;
@@ -23,6 +24,7 @@ namespace SpriterEngine
 		point getPivot() override;
 		ImageFile *getImage() override;
 
+		void setOffset(const point& newOffset) override;
 		void setPosition(const point &newPosition) override;
 		void setAngle(real newAngle) override;
 		void setScale(const point &newScale) override;
@@ -36,6 +38,7 @@ namespace SpriterEngine
 		void render() override;
 
 	private:
+		point offset;
 		point position;
 		AngleInfo angle;
 		point scale;

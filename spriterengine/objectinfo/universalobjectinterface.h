@@ -30,6 +30,7 @@ namespace SpriterEngine
 		void toggleTimelineCanUpdate(bool timelineCanUpdate) { _timelineCanUpdate = timelineCanUpdate; }
 		bool canTimelineUpdate() { return _timelineCanUpdate; }
 
+		virtual point getOffset();
 		virtual point getPosition();
 		virtual real getAngle();
 		virtual point getScale();
@@ -62,6 +63,7 @@ namespace SpriterEngine
 
 		virtual bool tagIsActive(const std::string &tagToCheck) const;
 
+		virtual void setOffset(const point &newOffset);
 		virtual void setPosition(const point &newPosition);
 		virtual void setAngle(real newAngle);
 		virtual void setScale(const point &newScale);
