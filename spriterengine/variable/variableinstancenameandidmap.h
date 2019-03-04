@@ -1,8 +1,9 @@
 #ifndef VARIABLEINSTANCENAMEANDIDMAP_H
 #define VARIABLEINSTANCENAMEANDIDMAP_H
 
-#include <vector>
 #include <map>
+#include <string>
+#include <vector>
 
 namespace SpriterEngine
 {
