@@ -23,7 +23,7 @@ namespace SpriterEngine
 		void setPath(std::string newPath);
 		std::string path();
 
-	private:
+	protected:
 		std::string filePath;
 	};
 

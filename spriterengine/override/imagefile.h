@@ -23,7 +23,7 @@ namespace SpriterEngine
 		virtual void setAtlasFile(AtlasFile* initialAtlasFile, atlasframedata initialAtlasFrameData);
 
 		point defaultPivot;
-
+		
 		virtual void renderSprite(UniversalObjectInterface *spriteInfo);
 
 	protected:

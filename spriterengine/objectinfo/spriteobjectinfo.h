@@ -36,7 +36,7 @@ namespace SpriterEngine
 		void setSpin(int newSpin) override;
 
 		void setToBlendedLinear(UniversalObjectInterface *aObject, UniversalObjectInterface *bObject, real t, real blendRatio, ObjectRefInstance *blendedRefInstance = 0) override;
-
+		
 		void render() override;
 
 	private:

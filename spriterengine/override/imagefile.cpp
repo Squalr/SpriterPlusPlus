@@ -23,7 +23,7 @@ namespace SpriterEngine
 		atlasFile = initialAtlasFile;
 		atlasFrameData = initialAtlasFrameData;
 	}
-
+	
 	void ImageFile::renderSprite(UniversalObjectInterface * spriteInfo)
 	{
 		if(atlasFile) {
