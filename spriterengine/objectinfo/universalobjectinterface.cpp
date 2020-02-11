@@ -191,6 +191,15 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::setSpin - object does not contain this component - no action taken");
 	}
 
+	void UniversalObjectInterface::setZ(int z)
+	{
+		this->z = z;
+	}
+
+	int UniversalObjectInterface::getZ()
+	{
+		return this->z;
+	}
 
 	void UniversalObjectInterface::setImage(ImageFile *newImageFile)
 	{

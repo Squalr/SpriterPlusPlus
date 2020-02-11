@@ -708,9 +708,10 @@ namespace SpriterEngine
 	{
 		if (zOrder)
 		{
-			for (auto& it : *zOrder)
+			for (int index = 0; index < zOrder->size(); index++)
 			{
-				it->render();
+				(*zOrder)[index]->setZ(index);
+				(*zOrder)[index]->render();
 			}
 		}
 	}

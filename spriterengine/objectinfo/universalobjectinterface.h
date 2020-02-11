@@ -72,6 +72,8 @@ namespace SpriterEngine
 		virtual void setAlphaOverride(real newAlpha);
 		virtual void setAlpha(real newAlpha);
 		virtual void setSpin(int newSpin);
+		virtual void setZ(int z);
+		virtual int getZ();
 
 		virtual void setImage(ImageFile *newImageFile);
 
@@ -105,6 +107,7 @@ namespace SpriterEngine
 
 	private:
 		bool _timelineCanUpdate = true;
+		float z;
 	};
 
 }
