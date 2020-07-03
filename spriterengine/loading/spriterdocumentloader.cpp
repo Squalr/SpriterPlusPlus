@@ -31,9 +31,8 @@ namespace SpriterEngine
 {
 	void SpriterDocumentLoader::loadFile(SpriterModel *model, SpriterFileDocumentWrapper *documentWrapper, const std::string &fileName)
 	{
-		documentWrapper->loadFile(fileName);
-
 		SpriterFileElementWrapper *spriterDataElement = documentWrapper->getFirstChildElement("spriter_data");
+
 		if (spriterDataElement->isValid())
 		{
 			FileFlattener fileFlattener;

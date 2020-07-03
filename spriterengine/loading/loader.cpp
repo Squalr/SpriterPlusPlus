@@ -18,41 +18,62 @@ namespace SpriterEngine
 
 	void Loader::loadFile(SpriterModel * model, const std::string &fileName)
 	{
+		static std::map<std::string, SpriterFileDocumentWrapper*> WrapperMap = std::map<std::string, SpriterFileDocumentWrapper*>();
 		SpriterDocumentLoader spriterDocumentLoader;
-		SpriterFileDocumentWrapper * wrapper = nullptr;
-
+		SpriterFileDocumentWrapper* wrapper = nullptr;
 		SpriterFileType fileType = extractFileTypeFromFileName(fileName);
+
+		if (WrapperMap.find(fileName) != WrapperMap.end())
+		{
+			wrapper = WrapperMap[fileName];
+		}
+		
 		switch (fileType)
 		{
-		case SPRITERFILETYPE_SCML:
-			wrapper = fileFactory->newScmlDocumentWrapper();
-			if (wrapper)
+			case SPRITERFILETYPE_SCML:
 			{
-				spriterDocumentLoader.loadFile(model, wrapper, fileName);
-			}
-			else
-			{
-				Settings::error("Loader::loadFile - attempting to load scml file \"" + fileName + "\" : no scml document wrapper found");
-			}
-			break;
+				if (wrapper == nullptr)
+				{
+					wrapper = fileFactory->newScmlDocumentWrapper();
+					wrapper->loadFile(fileName);
+				}
 
-		case SPRITERFILETYPE_SCON:
-			wrapper = fileFactory->newSconDocumentWrapper();
-			if (wrapper)
-			{
-				spriterDocumentLoader.loadFile(model, wrapper, fileName);
-			}
-			else
-			{
-				Settings::error("Loader::loadFile - attempting to load scon file \"" + fileName + "\" : no scon document wrapper found");
-			}
-			break;
+				if (wrapper)
+				{
 
-		default:
-			Settings::error("Loader::loadFile - attempting to load file \"" + fileName + "\" : unrecognized file type");
-			break;
+					spriterDocumentLoader.loadFile(model, wrapper, fileName);
+				}
+				else
+				{
+					Settings::error("Loader::loadFile - attempting to load scml file \"" + fileName + "\" : no scml document wrapper found");
+				}
+				break;
+			}
+			case SPRITERFILETYPE_SCON:
+			{
+				if (wrapper == nullptr)
+				{
+					wrapper = fileFactory->newSconDocumentWrapper();
+				}
+				
+				if (wrapper)
+				{
+					spriterDocumentLoader.loadFile(model, wrapper, fileName);
+				}
+				else
+				{
+					Settings::error("Loader::loadFile - attempting to load scon file \"" + fileName + "\" : no scon document wrapper found");
+				}
+				break;
+			}
+			default:
+			{
+				Settings::error("Loader::loadFile - attempting to load file \"" + fileName + "\" : unrecognized file type");
+				break;
+			}
 		}
-		delete wrapper;
+
+		WrapperMap[fileName] = wrapper;
 	}
 
 	Loader::SpriterFileType Loader::extractFileTypeFromFileName(const std::string &fileName)
