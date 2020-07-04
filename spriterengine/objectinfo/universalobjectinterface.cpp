@@ -191,12 +191,12 @@ namespace SpriterEngine
 		Settings::error("UniversalObjectInterface::setSpin - object does not contain this component - no action taken");
 	}
 
-	void UniversalObjectInterface::setZ(int z)
+	void UniversalObjectInterface::setZ(real z)
 	{
 		this->z = z;
 	}
 
-	int UniversalObjectInterface::getZ()
+	real UniversalObjectInterface::getZ()
 	{
 		return this->z;
 	}

@@ -1353,7 +1353,7 @@ namespace SpriterEngine
 				if (att->getName() == "parent")
 				{
 					int parentRefIndex = att->getIntValue();
-					if (parentRefIndex < refObjectIds.size())
+					if (parentRefIndex < int(refObjectIds.size()))
 					{
 						parentObjectId = refObjectIds.at(parentRefIndex);
 					}
@@ -1369,7 +1369,7 @@ namespace SpriterEngine
 					objectId = animation->getObjectIdFromTimelineIndex(timelineIndex);
 					refObjectIds.push_back(objectId);
 
-					if (timelineIndex >= 0 && timelineIndex < timelineRedunantKeyedVector->size())
+					if (timelineIndex >= 0 && timelineIndex < int(timelineRedunantKeyedVector->size()))
 					{
 						if (timelineRedunantKeyedVector->at(timelineIndex))
 						{
@@ -1423,7 +1423,7 @@ namespace SpriterEngine
 				if (it != spriteKeyFileInfoMap->end())
 				{
 					SpriteKeyFileInfoVector *spriteKeyInfoVector = &(*it).second;
-					if (keyIndex < spriteKeyInfoVector->size())
+					if (keyIndex < int(spriteKeyInfoVector->size()))
 					{
 						SpriteKeyFileInfo *spriteKeyInfo = &spriteKeyInfoVector->at(keyIndex);
 						mainlineKey->pushBackZOrderRef(new SpriteRef(objectId, parentObjectId, timelineKey, spriteKeyInfo->fileIndex, spriteKeyInfo->useDefaultPivot));
@@ -1440,7 +1440,7 @@ namespace SpriterEngine
 					if (it != subEntityKeyInfoMap->end())
 					{
 						SubEntityKeyInfoVector *subEntityKeyInfoVector = &(*it).second;
-						if (keyIndex < subEntityKeyInfoVector->size())
+						if (keyIndex < int(subEntityKeyInfoVector->size()))
 						{
 							SubEntityKeyInfo *subEntityKeyInfo = &subEntityKeyInfoVector->at(keyIndex);
 							mainlineKey->pushBackZOrderRef(new EntityRef(objectId, parentObjectId, timelineKey, subEntityKeyInfo->entityId, subEntityKeyInfo->animationIndex));

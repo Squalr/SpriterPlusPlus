@@ -196,7 +196,7 @@ namespace SpriterEngine
 
 	FileReference *EntityInstance::getFile(int fileId)
 	{
-		if (fileId < files.size())
+		if (fileId < int(files.size()))
 		{
 			return files.at(fileId);
 		}
@@ -708,7 +708,7 @@ namespace SpriterEngine
 	{
 		if (zOrder)
 		{
-			for (int index = 0; index < zOrder->size(); index++)
+			for (int index = 0; index < int(zOrder->size()); index++)
 			{
 				(*zOrder)[index]->setZ(index);
 				(*zOrder)[index]->render();

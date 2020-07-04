@@ -298,7 +298,7 @@ namespace SpriterEngine
 
 	void EntityInstanceData::setCurrentAnimation(int newAnimationIndex, AnimationInstance **currentAnimation)
 	{
-		if (newAnimationIndex < animations.size())
+		if (newAnimationIndex < int(animations.size()))
 		{
 			*currentAnimation = animations.at(newAnimationIndex);
 		}
@@ -384,7 +384,7 @@ namespace SpriterEngine
 
 	AnimationInstance * EntityInstanceData::getAnimation(int animationIndex)
 	{
-		if (animationIndex < animations.size())
+		if (animationIndex < int(animations.size()))
 		{
 			return animations.at(animationIndex);
 		}

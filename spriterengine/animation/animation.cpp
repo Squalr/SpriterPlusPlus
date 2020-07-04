@@ -147,7 +147,7 @@ namespace SpriterEngine
 
 	int Animation::getObjectIdFromTimelineIndex(int timelineIndex)
 	{
-		if (timelineIndex < objectTimelines.size())
+		if (timelineIndex < int(objectTimelines.size()))
 		{
 			return objectTimelines.at(timelineIndex)->getObjectId();
 		}

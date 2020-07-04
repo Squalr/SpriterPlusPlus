@@ -279,7 +279,7 @@ namespace SpriterEngine
 
 	MainlineKeyInstance * AnimationInstance::mainlineKeyAtIndex(int index)
 	{
-		if (index >= 0 && index < mainlineKeys.size())
+		if (index >= 0 && index < int(mainlineKeys.size()))
 		{
 			return mainlineKeys.at(index);
 		}

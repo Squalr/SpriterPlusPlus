@@ -52,7 +52,7 @@ namespace SpriterEngine
 
 	EntityInstance *SpriterModel::getNewEntityInstance(int entityId)
 	{
-		if (entityId < entities.size())
+		if (entityId < int(entities.size()))
 		{
 			return entities.at(entityId)->getNewEntityInstance(this, objectFactory);
 		}
@@ -167,7 +167,7 @@ namespace SpriterEngine
 
 	File * SpriterModel::getFileAtIndex(int fileIndex)
 	{
-		if (fileIndex >= 0 && fileIndex < files.size())
+		if (fileIndex >= 0 && fileIndex < int(files.size()))
 		{
 			return files.at(fileIndex);
 		}
@@ -179,7 +179,7 @@ namespace SpriterEngine
 
 	const std::string * SpriterModel::getTag(int tagIndex)
 	{
-		if (tagIndex < tags.size())
+		if (tagIndex < int(tags.size()))
 		{
 			return &tags.at(tagIndex);
 		}
@@ -197,7 +197,7 @@ namespace SpriterEngine
 
 	Entity * SpriterModel::getEntity(int entityId)
 	{
-		if (entityId < entities.size())
+		if (entityId < int(entities.size()))
 		{
 			return entities.at(entityId);
 		}

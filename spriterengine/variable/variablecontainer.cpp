@@ -23,7 +23,7 @@ namespace SpriterEngine
 
 	Variable *VariableContainer::getVariable(int variableIndex)
 	{
-		if (variableIndex<variables.size())
+		if (variableIndex < int(variables.size()))
 		{
 			return variables.at(variableIndex);
 		}
